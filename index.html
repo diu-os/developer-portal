@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIU OS Developer Portal</title>
+    <meta name="description" content="Developer documentation and resources for DIU OS">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .card p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .card a {
+            color: #4fc3f7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 40px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            color: #4fc3f7;
+        }
+        
+        .resources {
+            padding: 60px 0;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .resource-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        
+        .resource-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .resource-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        footer {
+            padding: 40px 0;
+            background: #0a0a0a;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="https://diu-os.org" class="logo">🔧 DIU OS Dev</a>
+            <ul class="nav-links">
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="#api">API</a></li>
+                <li><a href="https://github.com/diu-os">GitHub</a></li>
+                <li><a href="https://diu-os.org">Main Site</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero container">
+        <h1>Developer Portal</h1>
+        <p class="subtitle">Build the future of scientific computing with DIU OS</p>
+        
+        <div class="code-block">
+            <code>
+# Quick Start<br>
+git clone https://github.com/diu-os/diu-core.git<br>
+cd diu-core<br>
+cargo build --release<br>
+cargo run
+            </code>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>📚 Documentation</h3>
+                <p>Complete guides and API references for building on DIU OS platform.</p>
+                <a href="https://github.com/diu-os/diu-docs">View Docs →</a>
+            </div>
+            
+            <div class="card">
+                <h3>🔬 Physics Engine</h3>
+                <p>Quantum physics simulation engine built with Rust and WebAssembly.</p>
+                <a href="https://github.com/diu-os/physics-tutorial">Explore Code →</a>
+            </div>
+            
+            <div class="card">
+                <h3>🤖 MCP Integration</h3>
+                <p>Model Context Protocol servers for AI-powered research assistance.</p>
+                <a href="https://github.com/diu-os/mcp-servers">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="resources">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 20px;">
+                Developer Resources
+            </h2>
+            
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://github.com/diu-os">
+                        <div style="font-size: 48px; margin-bottom: 10px;">📦</div>
+                        <div>GitHub</div>
+                    </a>
+                </div>
+                
+                <div class="resource-item">
+                    <a href="#api">
+                        <div style="font-size: 48px; margin-bottom: 10px;">🔌</div>
+                        <div>API Docs</div>
+                    </a>
+                </div>
+                
+                <div class="resource-item">
+                    <a href="https://discord.gg/diu-os">
+                        <div style="font-size: 48px; margin-bottom: 10px;">💬</div>
+                        <div>Discord</div>
+                    </a>
+                </div>
+                
+                <div class="resource-item">
+                    <a href="https://github.com/diu-os/diu-core/issues">
+                        <div style="font-size: 48px; margin-bottom: 10px;">🐛</div>
+                        <div>Issues</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 60px 20px;">
+        <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px;">
+            Tech Stack
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center;">
+            <div>
+                <div style="font-size: 48px;">🦀</div>
+                <div>Rust</div>
+            </div>
+            <div>
+                <div style="font-size: 48px;">⚛️</div>
+                <div>React</div>
+            </div>
+            <div>
+                <div style="font-size: 48px;">🔷</div>
+                <div>TypeScript</div>
+            </div>
+            <div>
+                <div style="font-size: 48px;">🐘</div>
+                <div>PostgreSQL</div>
+            </div>
+            <div>
+                <div style="font-size: 48px;">🚀</div>
+                <div>WebAssembly</div>
+            </div>
+            <div>
+                <div style="font-size: 48px;">📦</div>
+                <div>Docker</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://diu-os.org">Foundation</a>
+                <a href="https://diu-os.com">Enterprise</a>
+                <a href="https://github.com/diu-os">GitHub</a>
+                <a href="mailto:dev@diu-os.dev">Contact</a>
+            </div>
+            <p>© 2025 DIU OS | Building the Scientific Operating System</p>
+        </div>
+    </footer>
+</body>
+</html>
