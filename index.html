@@ -3,30 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIU OS — Developer docs</title>
-  <meta name="description" content="Developer documentation is not published yet. The platform is diu-os.com.">
+  <title>DIU OS — Author a gene</title>
+  <meta name="description" content="Check a gene.json against diu-kernel v0.1.0. No public API, MCP server, or SDK on this host.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,800&family=IBM+Plex+Sans:wght@200;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #0a0a1a; --text: #e8e6e3; --muted: #9a968f; --accent: #2dd4bf; }
+    :root {
+      --bg: #0a0a1a;
+      --text: #e8e6e3;
+      --muted: #9a968f;
+      --border: #2a2a3a;
+      --accent: #2dd4bf;
+      --surface: #12121f;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: "IBM Plex Sans", sans-serif; font-weight: 200; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; align-items: center; }
-    .wrap { max-width: 36rem; margin: 0 auto; padding: 2rem 1.25rem; }
-    .brand { font-family: "JetBrains Mono", monospace; font-weight: 700; }
-    h1 { font-weight: 200; font-size: 2rem; margin: 1.25rem 0; }
-    p { color: var(--muted); margin: 0.75rem 0; }
-    a { color: var(--accent); }
+    body {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-weight: 200;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header, footer { border-color: var(--border); border-style: solid; }
+    header { border-bottom-width: 1px; }
+    footer { border-top-width: 1px; margin-top: 4rem; }
+    .wrap { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1.25rem; }
+    .brand { font-family: "JetBrains Mono", monospace; font-weight: 700; letter-spacing: 0.04em; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    nav ul { display: flex; gap: 1.25rem; list-style: none; font-size: 0.875rem; flex-wrap: wrap; }
+    nav a { color: var(--muted); }
+    h1 { font-family: Fraunces, serif; font-weight: 800; font-size: 2.4rem; line-height: 1.15; margin: 2.5rem 0 1rem; }
+    h2 { font-weight: 700; font-size: 1.05rem; margin: 2.25rem 0 0.75rem; }
+    .lede { color: var(--muted); margin-bottom: 1rem; }
+    ul.list { padding-left: 1.2rem; }
+    ul.list li { margin: 0.35rem 0; }
+    code, .mono { font-family: "JetBrains Mono", monospace; font-size: 0.85em; }
+    pre {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      margin: 0.75rem 0 1rem;
+      font-weight: 400;
+    }
+    footer p { color: var(--muted); font-size: 0.8rem; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <p class="brand">DIU OS</p>
-    <h1>Developer docs are not published yet</h1>
-    <p>This host is a placeholder. There is no public API, MCP server, or SDK here.</p>
-    <p>Platform: <a href="https://diu-os.com">diu-os.com</a></p>
-    <p>Public artifacts: <a href="https://github.com/diu-os/manifesto">manifesto</a>, <a href="https://github.com/diu-os/diu-contracts">contracts</a>.</p>
-    <p><a href="mailto:contact@diu-os.org">contact@diu-os.org</a></p>
-  </div>
+  <header>
+    <div class="wrap">
+      <nav>
+        <span class="brand">DIU OS</span>
+        <ul>
+          <li><a href="https://diu-os.com">Platform</a></li>
+          <li><a href="https://diu-os.org">Charter</a></li>
+          <li><a href="https://github.com/diu-os/diu-kernel">Kernel</a></li>
+          <li><a href="https://diu-os.com/#/write-your-gene">Questionnaire</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <h1>Author a gene</h1>
+    <p class="lede">
+      A gene is a passport, <span class="mono">gene.json</span>, checked by the public kernel.
+      The kernel decides whether the passport is complete. It does not run the scientific model.
+      The commercial distribution is <a href="https://diu-os.com">diu-os.com</a>.
+      The charter is <a href="https://diu-os.org">diu-os.org</a>.
+    </p>
+
+    <h2>What the kernel checks</h2>
+    <ul class="list">
+      <li><span class="mono">digest</span> — canonical JSON (RFC 8785) then SHA-256. The client does not supply the digest.</li>
+      <li><span class="mono">gate1</span> — the passport is complete: identity, purpose, equations, a real DOI, ports, units on numeric ports, an epistemic ceiling, limitations, and one verification check.</li>
+      <li><span class="mono">epistemic</span> — <span class="mono">fact</span>, <span class="mono">hypothesis</span>, <span class="mono">speculation</span>, <span class="mono">unknown</span>. The ceiling does not rise. On a gene the ceiling stays at hypothesis.</li>
+      <li>Verification here means the passport and a later run were computed as specified. It does not mean the model is adequate to the world.</li>
+    </ul>
+
+    <h2>gene.json</h2>
+    <ul class="list">
+      <li><span class="mono">identity.module_id</span> — lowercase, digits, underscores; 3–64 characters, starting with a letter.</li>
+      <li><span class="mono">identity.version</span> — <span class="mono">MAJOR.MINOR.PATCH</span>. <span class="mono">identity.title</span> — required, at most 120 characters.</li>
+      <li><span class="mono">scientific_purpose</span> — at least 40 characters.</li>
+      <li><span class="mono">mathematical_model.equations</span> — at least one equation. <span class="mono">source_doi</span> is required with equations, in the form <span class="mono">10.&lt;registrant&gt;/&lt;suffix&gt;</span>. Use a DOI that exists. Do not invent one.</li>
+      <li>At least one input and one output. A numeric port carries a <span class="mono">unit</span>.</li>
+      <li><span class="mono">known_limitations</span> — at least 40 characters. <span class="mono">verification_test</span> — at least 20 characters, one check someone else can rerun.</li>
+    </ul>
+    <p class="lede">
+      A passing local check yields a candidate pin: identity, revision, content hash.
+      A candidate pin is not a row in the module registry.
+    </p>
+
+    <h2>Clone the kernel</h2>
+    <p class="lede">
+      You need Rust (stable) and git. The pin is git tag <span class="mono">v0.1.0</span>,
+      commit <span class="mono">2cdda70eb3c69918e5c6e9d90817617c0387e935</span>.
+      GitHub’s Releases page lists no release asset. <span class="mono">git checkout v0.1.0</span> is the checkout.
+      The <span class="mono">diu</span> binary is not in this crate.
+    </p>
+    <pre>git clone https://github.com/diu-os/diu-kernel.git
+cd diu-kernel
+git checkout v0.1.0
+cargo test</pre>
+    <p class="lede">
+      <span class="mono">cargo test</span> compiles the library you are about to call:
+      <span class="mono">diu_kernel::gate1::validate_gate1</span> and
+      <span class="mono">diu_kernel::digest::canonical_digest</span>.
+      License: Apache-2.0.
+    </p>
+
+    <h2>Without building Rust</h2>
+    <p class="lede">
+      <a href="https://diu-os.com/#/write-your-gene">diu-os.com/#/write-your-gene</a>
+      asks for the passport in ordinary language and downloads <span class="mono">gene.json</span>.
+      It does not run the model and it does not upload the file.
+    </p>
+
+    <h2>License</h2>
+    <p class="lede">
+      The kernel is Apache-2.0. That is the license for this checker.
+      The Sepolia contract snapshot is MIT and is a different tree.
+      The platform — API, frontend, engines — is not published under either license.
+    </p>
+
+    <h2>What this host is not</h2>
+    <ul class="list">
+      <li>There is no public HTTP API, MCP server, or SDK here.</li>
+      <li>There is no CDC pipeline and no <span class="mono">api.diu-os.org</span>.</li>
+      <li><a href="https://github.com/diu-os/diu-docs">diu-docs</a> is not the documentation.</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p class="lede"><a href="mailto:contact@diu-os.org">contact@diu-os.org</a></p>
+  </main>
+  <footer>
+    <div class="wrap">
+      <p>© 2026 DIU OS. Kernel Apache-2.0, tag v0.1.0. Platform source is not in this organization.</p>
+    </div>
+  </footer>
 </body>
 </html>
