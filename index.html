@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DIU OS — Author a gene</title>
-  <meta name="description" content="Independent verification of computational and AI-generated scientific claims. Check a gene.json against diu-kernel v0.1.0. No public API, MCP server, or SDK on this host.">
+  <meta name="description" content="Independent verification of computational and AI-generated scientific claims. Check a gene.json offline with diu-cli 0.2.0 (cargo install diu-cli) and diu-kernel 0.2.0. No public HTTP API or MCP server on this host.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,800&family=IBM+Plex+Sans:wght@200;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -104,16 +104,29 @@
       A candidate pin is not a row in the module registry.
     </p>
 
-    <h2>Clone the kernel</h2>
+    <h2>Install the checker</h2>
     <p class="lede">
-      You need Rust (stable) and git. The pin is git tag <span class="mono">v0.1.0</span>,
-      commit <span class="mono">2cdda70eb3c69918e5c6e9d90817617c0387e935</span>.
-      GitHub’s Releases page lists no release asset. <span class="mono">git checkout v0.1.0</span> is the checkout.
-      The <span class="mono">diu</span> binary is not in this crate.
+      You need Rust (stable). One command installs <span class="mono">diu</span>, the command-line tool,
+      from crates.io. It runs Gate 1 with the same code the server runs, offline, with no account.
+    </p>
+    <pre>cargo install diu-cli
+diu new my_gene
+diu test my_gene/gene.json
+diu import my_gene/gene.json</pre>
+    <p class="lede">
+      <span class="mono">diu import</span> prints the candidate pin: identity, revision, content hash.
+      Source: <a href="https://github.com/diu-os/diu-cli">diu-os/diu-cli</a>, Apache-2.0.
+    </p>
+
+    <h2>Or clone the kernel</h2>
+    <p class="lede">
+      The pin is git tag <span class="mono">v0.2.0</span>,
+      commit <span class="mono">d490c537132fdad5cc9887b34d587163188a5952</span>.
+      The same version is on crates.io as <span class="mono">diu-kernel = "0.2"</span>.
     </p>
     <pre>git clone https://github.com/diu-os/diu-kernel.git
 cd diu-kernel
-git checkout v0.1.0
+git checkout v0.2.0
 cargo test</pre>
     <p class="lede">
       <span class="mono">cargo test</span> compiles the library you are about to call:
@@ -138,7 +151,7 @@ cargo test</pre>
 
     <h2>What this host is not</h2>
     <ul class="list">
-      <li>There is no public HTTP API, MCP server, or SDK here.</li>
+      <li>There is no public HTTP API or MCP server here. The command-line tool is <span class="mono">diu-cli</span> on crates.io.</li>
       <li>There is no CDC pipeline and no <span class="mono">api.diu-os.org</span>.</li>
       <li><a href="https://github.com/diu-os/diu-docs">diu-docs</a> is not the documentation.</li>
     </ul>
@@ -148,7 +161,7 @@ cargo test</pre>
   </main>
   <footer>
     <div class="wrap">
-      <p>© 2026 DIU OS. Kernel Apache-2.0, tag v0.1.0. Platform source is not in this organization.</p>
+      <p>© 2026 DIU OS. Kernel and CLI Apache-2.0, v0.2.0. Platform source is not in this organization.</p>
     </div>
   </footer>
 </body>
